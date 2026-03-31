@@ -34,21 +34,6 @@
       border-radius: 15px;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 25px;
-      background: #ffcc00;
-      color: black;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: #ffaa00;
-    }
-
     /* FLOU */
     #content {
       filter: blur(8px);
@@ -66,6 +51,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 999;
     }
 
     .popup-box {
@@ -132,7 +118,7 @@
   <div id="popup">
     <div class="popup-box">
       <h2>🔑 Accès requis</h2>
-      <p>Entre le mot de passe pour révéler l’indice :</p>
+      <p>Entre le mot de passe :</p>
 
       <input type="text" id="password" placeholder="Mot de passe">
       <br>
@@ -143,7 +129,7 @@
   </div>
 
   <script>
-    const correctPassword = "fontaine"; // 🔥 CHANGE ICI
+    const correctPassword = "fontaine";
 
     function checkPassword() {
       const input = document.getElementById("password").value;
