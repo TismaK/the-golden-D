@@ -2,87 +2,79 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Indice 1</title>
+  <title>THE GOLDEN D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #1e1e2f;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
       color: white;
       text-align: center;
       padding: 40px 20px;
     }
 
-    /* Contenu flouté */
-    #content {
-      filter: blur(8px);
-      transition: 0.3s;
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
 
-    /* Popup */
-    #popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
     }
 
     .box {
-      background: #2a2a40;
-      padding: 30px;
+      margin-top: 40px;
+      padding: 20px;
+      border: 2px solid white;
       border-radius: 15px;
-      width: 90%;
-      max-width: 400px;
     }
 
-    input {
-      padding: 10px;
-      width: 80%;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: none;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      border: none;
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 25px;
       background: #ffcc00;
+      color: black;
+      text-decoration: none;
+      border-radius: 10px;
       font-weight: bold;
     }
 
-    .error {
-      color: red;
-      margin-top: 10px;
+    .btn:hover {
+      background: #ffaa00;
     }
   </style>
-</head>
-
-<body>
 
   <!-- CONTENU -->
-  <div id="content">
-    <h1>🔐 Indice 1</h1>
-    <p>Bravo, tu as débloqué cet indice.</p>
-    <p>Voici ton message secret :</p>
+</head>
+<body>
 
-    <div style="margin-top:20px; font-size:1.3em;">
-      👉 "Le trésor est plus proche que tu ne le penses..."
-    </div>
+  <h1>🔥THE GOLDEN D.🔥</h1>
 
-    <br><br>
-    <a href="indice2.html" style="color:yellow;">Indice suivant</a>
+  <p>
+    Bienvenue dans la quête du GOLDEN D. !<br><br>
+    Trouve tous les QR Codes afin de mettre la main sur le GOLDEN D.<br>
+    Chaque QR Code te donnera un indice<br>
+    qui te rapprochera un peu plus du trésor.<br>
+    Une récompense attend les 10 premiers gagnants.<br><br>
+  </p>
+
+  <div class="box">
+    <p>🔍 Emplacement du prchain QR Code :</p>
+    <p>Je ne suis pas une rivière,<br>
+      Je ne suis pas une bouteille,<br>
+      Pourtant je fais couler de l’eau,<br>
+      Pour ceux qui ont soif.<br>
   </div>
 
-  <!-- POPUP -->
+</body>
+  
+ <!-- POPUP -->
   <div id="popup">
     <div class="box">
       <h2>🔑 Mot de passe requis</h2>
@@ -112,4 +104,5 @@
   </script>
 
 </body>
+  
 </html>
