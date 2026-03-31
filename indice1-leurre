@@ -1,0 +1,7 @@
+<img src="indice1-leurre.jpg" class="responsive-img">
+
+.responsive-img {
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+}
