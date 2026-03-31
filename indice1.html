@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>THE GOLDEN D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .box {
+      margin-top: 40px;
+      padding: 20px;
+      border: 2px solid white;
+      border-radius: 15px;
+    }
+
+    /* FLOU */
+    #content {
+      filter: blur(8px);
+      transition: 0.3s;
+    }
+
+    /* POPUP */
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background: #2a2a40;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #ffcc00;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONTENU -->
+  <div id="content">
+
+    <h1>👏Bravo !👏</h1>
+
+    <p>
+      Voici le premier indice :<br><br>
+      FILM<br>
+    </p>
+
+    <div class="box">
+      <p>🔍 Emplacement du prochain QR Code :</p>
+      <p>
+        Après avoir monté ces escaliers me voilà bien fatigué.<br>
+        Je me pose et écoute les conversations des admissions.<br>
+        Ma couleur rappelle souvent le ciel ou la mer.<br>
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
