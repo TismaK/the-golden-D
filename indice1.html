@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Indice 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1e1e2f;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    /* Contenu flouté */
+    #content {
+      filter: blur(8px);
+      transition: 0.3s;
+    }
+
+    /* Popup */
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      background: #2a2a40;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #ffcc00;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONTENU -->
+  <div id="content">
+    <h1>🔐 Indice 1</h1>
+    <p>Bravo, tu as débloqué cet indice.</p>
+    <p>Voici ton message secret :</p>
+
+    <div style="margin-top:20px; font-size:1.3em;">
+      👉 "Le trésor est plus proche que tu ne le penses..."
+    </div>
+
+    <br><br>
+    <a href="indice2.html" style="color:yellow;">Indice suivant</a>
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup">
+    <div class="box">
+      <h2>🔑 Mot de passe requis</h2>
+      <p>Entre le mot trouvé précédemment :</p>
+
+      <input type="text" id="password" placeholder="Mot de passe">
+      <br>
+      <button onclick="checkPassword()">Valider</button>
+
+      <div id="error" class="error"></div>
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = "soleil"; // 🔥 CHANGE ICI
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      
+      if (input.toLowerCase() === correctPassword) {
+        document.getElementById("content").style.filter = "blur(0)";
+        document.getElementById("popup").style.display = "none";
+      } else {
+        document.getElementById("error").innerText = "Mot de passe incorrect";
+      }
+    }
+  </script>
+
+</body>
+</html>
