@@ -134,17 +134,18 @@
   </div>
 
   <script>
-    const correctPassword = "FILM";
+    const correctPassword = "film";
 
-    function checkPassword() {
-      const input = document.getElementById("password").value;
+function checkPassword() {
+  const input = document.getElementById("password").value.trim().toLowerCase();
 
-      if (input.toLowerCase() === correctPassword) {
-        document.getElementById("content").style.filter = "blur(0)";
-        document.getElementById("popup").style.display = "none";
-      } else {
-        document.getElementById("error").innerText = "Mot de passe incorrect";
-      }
+  if (input === correctPassword) {
+    document.getElementById("content").style.filter = "blur(0)";
+    document.getElementById("popup").style.display = "none";
+  } else {
+    document.getElementById("error").innerText = "Mot de passe incorrect";
+  }
+}
     }
   </script>
 
