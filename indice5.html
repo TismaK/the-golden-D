@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>THE GOLDEN D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+     k {
+      font-size: 2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    
+    .box {
+      margin-top: 40px;
+      padding: 20px;
+      border: 2px solid white;
+      border-radius: 15px;
+    }
+
+    /* FLOU */
+    #content {
+      filter: blur(8px);
+      transition: 0.3s;
+    }
+
+    /* POPUP */
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background: #2a2a40;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #ffcc00;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    /* Animation erreur (shake) */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+    }
+
+    /* Confettis */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: red;
+      top: 0;
+      opacity: 0.8;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONTENU -->
+  <div id="content">
+
+    <h1>👏Bravo !👏</h1>
+
+    <p>
+      Voici le 5ème indice :<br><br>
+    </p>
+
+    <k>
+      HUBERT<br>
+    </k>
+
+    <div class="box">
+      <p>🔍 Emplacement du prochain<br>
+      QR Code :<br><br></p>
+      <p>
+        Oulah ! Le café est très corcé !<br>
+        L’informaticien a trop d’énergie.<br>
+        Il retourne prendre sa revanche<br>
+        au jeu du ballon pour bébé.<br>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup">
+    <div class="popup-box">
+      <h2>🔑 Accès requis</h2>
+      <p>Entrer le 4ème indice :</p>
+
+      <input type="text" id="password" placeholder="Mot de passe">
+      <br>
+      <button onclick="checkPassword()">Valider</button>
+
+      <div id="error" class="error"></div>
+    </div>
+  </div>
+
+  <script>
+  const correctPassword = "hazanavicius";
+
+  function checkPassword() {
+    const input = document.getElementById("password").value.trim().toLowerCase();
+    const popupBox = document.querySelector(".popup-box");
+
+    if (input === correctPassword) {
+
+      // 🎉 Confettis
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+      }
+
+      // Déverrouillage avec petit délai (pour profiter des confettis)
+      setTimeout(() => {
+        document.getElementById("content").style.filter = "blur(0)";
+        document.getElementById("popup").style.display = "none";
+      }, 500);
+
+    } else {
+
+      // ❌ Shake animation
+      popupBox.classList.add("shake");
+
+      setTimeout(() => {
+        popupBox.classList.remove("shake");
+      }, 400);
+
+      document.getElementById("error").innerText = "Mot de passe incorrect";
+    }
+  }
+</script>
+
+</body>
+</html>
