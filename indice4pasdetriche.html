@@ -176,46 +176,50 @@
   </div>
 
   <script>
-  const correctPassword = "comedie";
+const correctPassword = "comedie";
 
-  function checkPassword() {
-    const input = document.getElementById("password").value.trim().toLowerCase();
-    const popupBox = document.querySelector(".popup-box");
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")                 // sépare les accents
+    .replace(/[\u0300-\u036f]/g, ""); // supprime les accents
+}
 
-    if (input === correctPassword) {
+function checkPassword() {
+  const input = normalize(document.getElementById("password").value.trim());
+  const popupBox = document.querySelector(".popup-box");
 
-      // 🎉 Confettis
-      for (let i = 0; i < 80; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
+  if (input === correctPassword) {
 
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
-        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    // 🎉 Confettis
+    for (let i = 0; i < 80; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
 
-        document.body.appendChild(confetti);
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+      confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
 
-        setTimeout(() => confetti.remove(), 3000);
-      }
+      document.body.appendChild(confetti);
 
-      // Déverrouillage avec petit délai (pour profiter des confettis)
-      setTimeout(() => {
-        document.getElementById("content").style.filter = "blur(0)";
-        document.getElementById("popup").style.display = "none";
-      }, 500);
-
-    } else {
-
-      // ❌ Shake animation
-      popupBox.classList.add("shake");
-
-      setTimeout(() => {
-        popupBox.classList.remove("shake");
-      }, 400);
-
-      document.getElementById("error").innerText = "Mot de passe incorrect";
+      setTimeout(() => confetti.remove(), 3000);
     }
+
+    setTimeout(() => {
+      document.getElementById("content").style.filter = "blur(0)";
+      document.getElementById("popup").style.display = "none";
+    }, 500);
+
+  } else {
+    popupBox.classList.add("shake");
+
+    setTimeout(() => {
+      popupBox.classList.remove("shake");
+    }, 400);
+
+    document.getElementById("error").innerText = "Mot de passe incorrect";
   }
+}
 </script>
 
 </body>
