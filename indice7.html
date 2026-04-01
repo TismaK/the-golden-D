@@ -94,6 +94,20 @@
   }
 </style>
 
+  <!-- POPUP -->
+  <div id="popup">
+    <div class="popup-box">
+      <h2>🔑 Accès requis</h2>
+      <p>Entrer le 6ème indice :</p>
+
+      <input type="text" id="password" placeholder="Mot de passe">
+      <br>
+      <button onclick="checkPassword()">Valider</button>
+
+      <div id="error" class="error"></div>
+    </div>
+  </div>
+
   <script>
   const correctPassword = "dujardin";
 
