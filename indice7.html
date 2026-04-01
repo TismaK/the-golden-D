@@ -11,4 +11,85 @@
   height: auto;
   margin: auto;
 }
-</style>
+/* FLOU */
+    #content {
+      filter: blur(8px);
+      transition: 0.3s;
+    }
+
+    /* POPUP */
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background: #2a2a40;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #ffcc00;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    /* Animation erreur (shake) */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+    }
+
+    /* Confettis */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: red;
+      top: 0;
+      opacity: 0.8;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
