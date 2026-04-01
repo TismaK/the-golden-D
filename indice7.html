@@ -1,26 +1,31 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>THE GOLDEN D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<img src="Indice7.jpg" alt="Indice" class="responsive-img">
   
   <style>
-    .responsive-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: auto;
-      
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
       color: white;
       text-align: center;
       padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    /* IMAGE DE FOND FLOUTÉE */
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url("ton-image.png") center/cover no-repeat;
+      filter: blur(8px);
+      z-index: -1;
+      transition: 0.5s;
     }
 
     h1 {
@@ -35,11 +40,8 @@
       line-height: 1.6;
     }
 
-     k {
+    k {
       font-size: 2em;
-      max-width: 600px;
-      margin: auto;
-      line-height: 1.6;
     }
     
     .box {
@@ -47,12 +49,7 @@
       padding: 20px;
       border: 2px solid white;
       border-radius: 15px;
-    }
-
-    /* FLOU */
-    #content {
-      filter: blur(8px);
-      transition: 0.3s;
+      background: rgba(0,0,0,0.4); /* lisibilité */
     }
 
     /* POPUP */
@@ -99,7 +96,8 @@
       color: red;
       margin-top: 10px;
     }
-    /* Animation erreur (shake) */
+
+    /* Animation erreur */
     @keyframes shake {
       0% { transform: translateX(0); }
       20% { transform: translateX(-8px); }
@@ -118,7 +116,6 @@
       position: fixed;
       width: 10px;
       height: 10px;
-      background: red;
       top: 0;
       opacity: 0.8;
       animation: fall linear forwards;
@@ -133,11 +130,40 @@
   </style>
 </head>
 
+<body>
+
+  <!-- IMAGE DE FOND -->
+  <div id="background"></div>
+
+  <!-- CONTENU -->
+  <div id="content">
+
+    <h1>👏Bravo !👏</h1>
+
+    <p>
+      Voici le 6ème indice :<br><br>
+    </p>
+
+    <k>
+      DUJARDIN<br>
+    </k>
+
+    <div class="box">
+      <p>🔍 Emplacement du prochain<br>QR Code :<br><br></p>
+      <p>
+        Claude ne sais pas utilisé un QR Code.<br>
+        Alors il l'habilla de son plus bel RGB<br>
+        afin de vous aider.<br>
+      </p>
+    </div>
+
+  </div>
+
   <!-- POPUP -->
   <div id="popup">
     <div class="popup-box">
       <h2>🔑 Accès requis</h2>
-      <p>Entrer le 6ème indice :</p>
+      <p>Entrer le 5ème indice :</p>
 
       <input type="text" id="password" placeholder="Mot de passe">
       <br>
@@ -148,47 +174,45 @@
   </div>
 
   <script>
-  const correctPassword = "dujardin";
+    const correctPassword = "hubert";
 
-  function checkPassword() {
-    const input = document.getElementById("password").value.trim().toLowerCase();
-    const popupBox = document.querySelector(".popup-box");
+    function checkPassword() {
+      const input = document.getElementById("password").value.trim().toLowerCase();
+      const popupBox = document.querySelector(".popup-box");
 
-    if (input === correctPassword) {
+      if (input === correctPassword) {
 
-      // 🎉 Confettis
-      for (let i = 0; i < 80; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
+        // 🎉 Confettis
+        for (let i = 0; i < 80; i++) {
+          const confetti = document.createElement("div");
+          confetti.classList.add("confetti");
 
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
-        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+          confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
 
-        document.body.appendChild(confetti);
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 3000);
+        }
 
-        setTimeout(() => confetti.remove(), 3000);
+        // 🔓 Défloute le fond
+        setTimeout(() => {
+          document.getElementById("background").style.filter = "blur(0)";
+          document.getElementById("popup").style.display = "none";
+        }, 500);
+
+      } else {
+
+        popupBox.classList.add("shake");
+
+        setTimeout(() => {
+          popupBox.classList.remove("shake");
+        }, 400);
+
+        document.getElementById("error").innerText = "Mot de passe incorrect";
       }
-
-      // Déverrouillage avec petit délai (pour profiter des confettis)
-      setTimeout(() => {
-        document.getElementById("content").style.filter = "blur(0)";
-        document.getElementById("popup").style.display = "none";
-      }, 500);
-
-    } else {
-
-      // ❌ Shake animation
-      popupBox.classList.add("shake");
-
-      setTimeout(() => {
-        popupBox.classList.remove("shake");
-      }, 400);
-
-      document.getElementById("error").innerText = "Mot de passe incorrect";
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>
