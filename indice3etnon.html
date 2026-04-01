@@ -131,6 +131,18 @@
         opacity: 0;
       }
     }
+      .dot-grid {
+  position: relative;
+  width: 300px;      /* largeur de ta grille */
+  height: 150px;     /* hauteur */
+  margin: 20px auto; /* centré */
+}
+
+.dot {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
   </style>
 </head>
 
@@ -158,6 +170,13 @@
         
         "Bonjour, j’ai laissé le prochain<br>
         QR code dans un de ces ordis.<br><br>
+
+        <div class="dot-grid">
+  <!-- Tes points -->
+  <div class="dot" style="top:20px; left:50px; width:6px; height:6px;"></div>
+  <div class="dot" style="top:60px; left:120px; width:10px; height:10px;"></div>
+  <div class="dot" style="top:100px; left:80px; width:4px; height:4px;"></div>
+</div>
         
         "Je crois me souvenir que<br>
         le nom du dossier était <strong><font color="#D95909">The D.</font></strong>"<br>
