@@ -1,55 +1,28 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>THE GOLDEN D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <title>Indice</title>
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      overflow-x: hidden;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
     }
 
-    /* IMAGE DE FOND FLOUTÉE */
-    #background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url("ton-image.png") center/cover no-repeat;
-      filter: blur(8px);
-      z-index: -1;
-      transition: 0.5s;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-      max-width: 600px;
+    /* IMAGE */
+    #content img {
+      display: block;
+      width: 100%;
+      height: auto;
       margin: auto;
-      line-height: 1.6;
     }
 
-    k {
-      font-size: 2em;
-    }
-    
-    .box {
-      margin-top: 40px;
-      padding: 20px;
-      border: 2px solid white;
-      border-radius: 15px;
-      background: rgba(0,0,0,0.4); /* lisibilité */
+    /* FLOU */
+    #content {
+      filter: blur(8px);
+      transition: 0.3s;
     }
 
     /* POPUP */
@@ -72,6 +45,8 @@
       border-radius: 15px;
       width: 90%;
       max-width: 400px;
+      text-align: center;
+      color: white;
     }
 
     input {
@@ -97,7 +72,7 @@
       margin-top: 10px;
     }
 
-    /* Animation erreur */
+    /* SHAKE */
     @keyframes shake {
       0% { transform: translateX(0); }
       20% { transform: translateX(-8px); }
@@ -111,7 +86,7 @@
       animation: shake 0.4s;
     }
 
-    /* Confettis */
+    /* CONFETTIS */
     .confetti {
       position: fixed;
       width: 10px;
@@ -132,40 +107,19 @@
 
 <body>
 
-  <!-- IMAGE DE FOND -->
-  <div id="background"></div>
-
-  <!-- CONTENU -->
+  <!-- IMAGE FLOUTÉE -->
   <div id="content">
-
-    <h1>👏Bravo !👏</h1>
-
-    <p>
-      Voici le 6ème indice :<br><br>
-    </p>
-
-    <k>
-      DUJARDIN<br>
-    </k>
-
-    <div class="box">
-      <p>🔍 Emplacement du prochain<br>QR Code :<br><br></p>
-      <p>
-        Claude ne sais pas utilisé un QR Code.<br>
-        Alors il l'habilla de son plus bel RGB<br>
-        afin de vous aider.<br>
-      </p>
-    </div>
-
+    <img src="Indice1-leurre.jpg" alt="Indice">
   </div>
 
   <!-- POPUP -->
   <div id="popup">
     <div class="popup-box">
       <h2>🔑 Accès requis</h2>
-      <p>Entrer le 5ème indice :</p>
+      <p>Entre le mot de passe :</p>
 
-      <input type="text" id="password" placeholder="Mot de passe">
+      <input type="text" id="password" placeholder="Mot de passe"
+        onkeypress="if(event.key==='Enter') checkPassword()">
       <br>
       <button onclick="checkPassword()">Valider</button>
 
@@ -174,7 +128,7 @@
   </div>
 
   <script>
-    const correctPassword = "hubert";
+    const correctPassword = "dujardin"; // 🔥 change ici
 
     function checkPassword() {
       const input = document.getElementById("password").value.trim().toLowerCase();
@@ -195,9 +149,9 @@
           setTimeout(() => confetti.remove(), 3000);
         }
 
-        // 🔓 Défloute le fond
+        // 🔓 Déblocage
         setTimeout(() => {
-          document.getElementById("background").style.filter = "blur(0)";
+          document.getElementById("content").style.filter = "blur(0)";
           document.getElementById("popup").style.display = "none";
         }, 500);
 
